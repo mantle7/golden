@@ -53,9 +53,8 @@
                                 class="form-control"
                                 id="wayBillNumber"
                                 name="wayBillNumber"
-                                placeholder="Enter LR number"
+                                placeholder="Enter LR number (e.g. SRT-12345)"
                                 autocomplete="off"
-                                inputmode="numeric"
                                 required
                             >
                             <button type="submit" class="btn btn-primary tracking-submit" id="trackingSubmit">
@@ -90,7 +89,7 @@
                         </p>
                         <div class="contact-info">
                             <ul>
-                                <li><a href="https://wa.me/+919789907248?text=urlencodedtext.">9789907248 / 8980580064</a></li>
+                                <li><a href="https://wa.me/+919789907248">9789907248 / 8980580064</a></li>
                                 <li><a href="mailto:goldentransport111@gmail.com">goldentransport111@gmail.com</a></li>
                                 <li><a href="https://maps.app.goo.gl/AJsBRRiAu8BHpBQWA" target="_blank" rel="noopener noreferrer" class="btn btn-locate">Locate us</a></li>
                             </ul>
@@ -127,7 +126,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12 social-icons">
-                        <a href="https://wa.me/9789907248?text=urlencodedtext." aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="https://wa.me/9789907248" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
                     </div>
                 </div>
             </div>
@@ -155,7 +154,7 @@
             }
 
             if (!isValidLrNumber(lrNumber)) {
-                showMessage('LR numbers start with SRT-. Please check the number and try again.', 'warning');
+                showMessage('LR numbers must start with SRT-. Please check and try again.', 'warning');
                 wayBillInput.focus();
                 return;
             }
@@ -178,7 +177,7 @@
             }
 
             messageBox.hidden = false;
-            showMessage('Press “Track now” to load tracking details.', 'info');
+            showMessage('Press "Track now" to load tracking details.', 'info');
         });
 
         async function fetchTrackingInfo(lrNumber) {
@@ -196,10 +195,11 @@
                 const response = await fetch(apiUrl.toString(), {
                     method: 'GET',
                     headers: { 'Accept': 'application/json' },
+                    mode: 'cors'
                 });
 
                 if (!response.ok) {
-                    throw new Error(`Tracking service returned ${response.status}`);
+                    throw new Error(`Tracking service returned status ${response.status}`);
                 }
 
                 const payload = await response.json();
@@ -213,14 +213,15 @@
                 renderTrackingInfo(trackingData, lrNumber);
             } catch (error) {
                 console.error('Tracking fetch failed:', error);
-                renderErrorState('We could not load tracking details right now. Please double-check the LR number and try again.');
+                renderErrorState('Unable to connect to tracking servers. Please double-check your connection or LR number.');
             } finally {
                 setLoadingState(false);
             }
         }
 
         function normalizeTrackingData(payload) {
-            const raw = payload?.serviceResult ? payload?.result ? payload;
+            if (!payload) return [];
+            const raw = payload.serviceResult || payload.result || payload;
             if (Array.isArray(raw)) {
                 return raw.filter(Boolean);
             }
@@ -231,42 +232,23 @@
         }
 
         function isMissingTrackingRecord(payload, trackingData) {
-            const raw = payload?.serviceResult ? payload?.result ? payload;
-            const rawText = JSON.stringify(payload ? {}).toLowerCase();
-
-            if (Array.isArray(raw) && raw.length === 0) {
+            if (!trackingData || trackingData.length === 0) {
                 return true;
             }
 
-            if (!trackingData.length) {
-                return true;
-            }
+            const hasMeaningfulFields = trackingData.some((record) =>
+                Boolean(
+                    record?.status ||
+                    record?.dateTime ||
+                    record?.branchName ||
+                    record?.destinationBranchName ||
+                    record?.chargeWeight ||
+                    record?.billableWeight ||
+                    record?.dispatchVehicleNumber
+                )
+            );
 
-            if (raw && typeof raw === 'object') {
-                const hasMeaningfulTrackingFields = trackingData.some((record) =>
-                    Boolean(
-                        record?.status ||
-                        record?.dateTime ||
-                        record?.branchName ||
-                        record?.destinationBranchName ||
-                        record?.chargeWeight ||
-                        record?.billableWeight ||
-                        record?.dispatchVehicleNumber
-                    )
-                );
-
-                if (!hasMeaningfulTrackingFields) {
-                    return true;
-                }
-
-                if (raw.success === false || raw.error || raw.message || raw.msg) {
-                    if (rawText.includes('not found') || rawText.includes('no record') || rawText.includes('invalid') || rawText.includes('does not exist')) {
-                        return true;
-                    }
-                }
-            }
-
-            return false;
+            return !hasMeaningfulFields;
         }
 
         function isValidLrNumber(lrNumber) {
@@ -315,7 +297,7 @@
             statusesContainer.innerHTML = '';
             resultSection.hidden = true;
             messageBox.hidden = false;
-            showMessage(`No tracking record was found for LR number ${lrNumber}. Please check the number and try again.`, 'danger');
+            showMessage(`No tracking record found for LR number ${lrNumber}. Please double-check the number.`, 'danger');
         }
 
         function renderErrorState(text) {
@@ -339,7 +321,7 @@
 
         function buildTrackingStages(trackingData) {
             const stageDefinitions = [
-                { key: 'BOOKED', label: 'Booked' },
+                { key: 'BOOK', label: 'Booked' },
                 { key: 'DISPATCH', label: 'Dispatched' },
                 { key: 'RECEIV', label: 'Received' },
                 { key: 'DELIVER', label: 'Delivered' },
@@ -446,20 +428,6 @@
             return item;
         }
 
-        function createEmptyStateCard(lrNumber) {
-            const card = document.createElement('article');
-            card.className = 'tracking-empty-card';
-
-            const heading = document.createElement('h3');
-            heading.textContent = 'No updates yet';
-
-            const text = document.createElement('p');
-            text.textContent = `We could not find tracking events for LR number ${lrNumber}. Please check the number and try again.`;
-
-            card.append(heading, text);
-            return card;
-        }
-
         function buildStatusFields(status) {
             if (!status) return [];
 
@@ -476,11 +444,8 @@
             return fields.filter(({ value }) => value !== undefined && value !== null && String(value).trim() !== '');
         }
 
-
         function formatTrackingDate(value) {
-            if (value === undefined || value === null || String(value).trim() === '') {
-                return '';
-            }
+            if (!value || String(value).trim() === '') return '';
 
             const raw = String(value).trim();
             const normalized = raw.includes('T') ? raw : raw.replace(' ', 'T');
@@ -497,25 +462,9 @@
                 });
             }
 
-            const match = raw.match(/^(\d{1,2})[-/](\d{1,2})[-/](\d{2,4})(?:[ T](\d{1,2}):(\d{2})(?::(\d{2}))?)?$/);
-            if (!match) {
-                return raw;
-            }
-
-            const [, first, second, year, hour = '0', minute = '00'] = match;
-            const firstNum = Number(first);
-            const secondNum = Number(second);
-            const month = firstNum > 12 ? secondNum : firstNum;
-            const day = firstNum > 12 ? firstNum : secondNum;
-            const resolvedYear = year.length === 2 ? `20${year}` : year;
-            const hourNum = Number(hour);
-            const ampm = hourNum >= 12 ? 'PM' : 'AM';
-            const displayHour = ((hourNum % 12) || 12).toString();
-            const displayMinute = minute.padStart(2, '0');
-            const monthLabel = new Date(Number(resolvedYear), month - 1, day).toLocaleString('en-US', { month: 'short' });
-
-            return `${monthLabel} ${day}, ${resolvedYear}, ${displayHour}:${displayMinute} ${ampm}`;
+            return raw;
         }
+
         function pickFirstDefined(...values) {
             for (const value of values) {
                 if (value !== undefined && value !== null && String(value).trim() !== '') {
