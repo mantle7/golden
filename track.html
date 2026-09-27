@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,469 +11,1293 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="tracking-page">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
+
+```
+<nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">
+            <img class="brand" src="img/1.png" alt="Golden Transport Service">
+        </a>
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="branches.html">Branches</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="services.html">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="track.html">Tracking</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<main class="tracking-page-main">
+
+    <section class="tracking-hero">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img class="brand" src="img/1.png" alt="Golden Transport Service">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="branches.html">Branches</a></li>
-                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="track.html">Tracking</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                </ul>
+            <div class="tracking-hero-inner">
+                <span class="tracking-eyebrow">Real-time shipment updates</span>
+
+                <h1>Track your consignment</h1>
+
+                <p>
+                    Enter the LR number to see the latest booking, dispatch,
+                    and delivery milestones.
+                </p>
             </div>
         </div>
-    </nav>
+    </section>
 
-    <main class="tracking-page-main">
-        <section class="tracking-hero">
-            <div class="container">
-                <div class="tracking-hero-inner">
-                    <span class="tracking-eyebrow">Real-time shipment updates</span>
-                    <h1>Track your consignment</h1>
-                    <p>Enter the LR number to see the latest booking, dispatch, and delivery milestones.</p>
-                </div>
-            </div>
-        </section>
+    <section class="tracking-panel-wrap">
+        <div class="container">
 
-        <section class="tracking-panel-wrap">
-            <div class="container">
-                <div class="tracking-container tracking-mobile-shell">
-                    <form class="tracking-form" id="trackingForm" novalidate>
-                        <label for="wayBillNumber" class="form-label">LR Number</label>
-                        <div class="tracking-input-group">
-                            <input
-                                type="text"
-                                class="form-control"
-                                id="wayBillNumber"
-                                name="wayBillNumber"
-                                placeholder="Enter LR number (e.g. SRT-12345)"
-                                autocomplete="off"
-                                required
-                            >
-                            <button type="submit" class="btn btn-primary tracking-submit" id="trackingSubmit">
-                                Track now
-                            </button>
-                        </div>
-                        <div class="tracking-hint">Tip: paste the LR number exactly as shared on your receipt. LR numbers start with "SRT-".</div>
-                    </form>
+            <div class="tracking-container tracking-mobile-shell">
 
-                    <div class="tracking-message" id="trackingMessage" role="status" aria-live="polite">
-                        Start by entering an LR number to view tracking details.
+                <form class="tracking-form" id="trackingForm" novalidate>
+
+                    <label for="wayBillNumber" class="form-label">
+                        LR Number
+                    </label>
+
+                    <div class="tracking-input-group">
+
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="wayBillNumber"
+                            name="wayBillNumber"
+                            placeholder="Enter LR number"
+                            autocomplete="off"
+                            required
+                        >
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary tracking-submit"
+                            id="trackingSubmit"
+                        >
+                            Track now
+                        </button>
+
                     </div>
 
-                    <section class="tracking-result" id="trackingResult" aria-live="polite" hidden>
-                        <div class="tracking-summary-card" id="trackingSummary"></div>
-                        <div class="tracking-steps" id="trackingStatuses"></div>
-                    </section>
-                </div>
-            </div>
-        </section>
-    </main>
+                    <div class="tracking-hint">
+                        Enter the LR number exactly as shown on your receipt.
+                    </div>
 
-    <footer>
-        <div class="container">
-            <div class="footer-base">
-                <div class="row align-items-center">
-                    <div class="col-md-3">
-                        <h4>Find us at:</h4>
+                </form>
+
+                <div
+                    class="tracking-message"
+                    id="trackingMessage"
+                    role="status"
+                    aria-live="polite"
+                >
+                    Start by entering an LR number to view tracking details.
+                </div>
+
+                <section
+                    class="tracking-result"
+                    id="trackingResult"
+                    aria-live="polite"
+                    hidden
+                >
+
+                    <div
+                        class="tracking-summary-card"
+                        id="trackingSummary"
+                    ></div>
+
+                    <div
+                        class="tracking-steps"
+                        id="trackingStatuses"
+                    ></div>
+
+                </section>
+
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-base">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-3">
+
+                    <h4>Find us at:</h4>
+
+                    <hr>
+
+                    <p class="footer-address">
+                        H/O: 158/1, Royal Township, Puna Kumbharia Road,
+                        Saroli, Surat<br>
+                        395010
+                    </p>
+
+                    <div class="contact-info">
+
+                        <ul>
+
+                            <li>
+                                <a href="https://wa.me/+919789907248">
+                                    9789907248 / 8980580064
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="mailto:goldentransport111@gmail.com">
+                                    goldentransport111@gmail.com
+                                </a>
+                            </li>
+
+                            <li>
+                                <a
+                                    href="https://maps.app.goo.gl/AJsBRRiAu8BHpBQWA"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="btn btn-locate"
+                                >
+                                    Locate us
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <img
+                        src="img/111.png"
+                        alt="Golden Transport Service logo"
+                        class="footer-nav-logo"
+                    >
+
+                    <div class="footer-links">
+
+                        <a href="index.html" class="footer-links-color">
+                            Home
+                        </a>
+
+                        <span class="divider">|</span>
+
+                        <a href="contact.html" class="footer-links-color">
+                            Contact us
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <div class="service">
+
+                        <h4>Our services</h4>
+
                         <hr>
-                        <p class="footer-address">
-                            H/O: 158/1, Royal Township, Puna Kumbharia Road, Saroli, Surat<br>395010
-                        </p>
-                        <div class="contact-info">
-                            <ul>
-                                <li><a href="https://wa.me/+919789907248">9789907248 / 8980580064</a></li>
-                                <li><a href="mailto:goldentransport111@gmail.com">goldentransport111@gmail.com</a></li>
-                                <li><a href="https://maps.app.goo.gl/AJsBRRiAu8BHpBQWA" target="_blank" rel="noopener noreferrer" class="btn btn-locate">Locate us</a></li>
-                            </ul>
-                        </div>
+
+                        <ul>
+                            <li>Full Truck Load</li>
+                            <li>Part Truck Load</li>
+                            <li>Parcel Services</li>
+                            <li>Real-time Tracking</li>
+                            <li>Customized Solutions</li>
+                            <li>Express Delivery</li>
+                        </ul>
+
                     </div>
-                    <div class="col-md-6">
-                        <img src="img/111.png" alt="Golden Transport Service logo" class="footer-nav-logo">
-                        <div class="footer-links">
-                            <a href="index.html" class="footer-links-color">Home</a>
-                            <span class="divider">|</span>
-                            <a href="contact.html" class="footer-links-color">Contact us</a>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="service">
-                            <h4>Our services</h4>
-                            <hr>
-                            <ul>
-                                <li>Full Truck Load</li>
-                                <li>Part Truck Load</li>
-                                <li>Parcel Services</li>
-                                <li>Real-time Tracking</li>
-                                <li>Customized Solutions</li>
-                                <li>Express Delivery</li>
-                            </ul>
-                        </div>
-                    </div>
+
                 </div>
-                <hr class="hr-line">
-                <div class="row">
-                    <div class="col-12">
-                        <p class="footer-text">© 2017 Golden Transport Services. All Rights Reserved.</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 social-icons">
-                        <a href="https://wa.me/9789907248" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-                    </div>
-                </div>
+
             </div>
+
+            <hr class="hr-line">
+
+            <div class="row">
+
+                <div class="col-12">
+
+                    <p class="footer-text">
+                        © 2017 Golden Transport Services. All Rights Reserved.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-12 social-icons">
+
+                    <a
+                        href="https://wa.me/9789907248"
+                        aria-label="WhatsApp"
+                    >
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
         </div>
-    </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        const form = document.getElementById('trackingForm');
-        const submitButton = document.getElementById('trackingSubmit');
-        const wayBillInput = document.getElementById('wayBillNumber');
-        const messageBox = document.getElementById('trackingMessage');
-        const resultSection = document.getElementById('trackingResult');
-        const summaryContainer = document.getElementById('trackingSummary');
-        const statusesContainer = document.getElementById('trackingStatuses');
+    </div>
 
-        form.addEventListener('submit', async (event) => {
-            event.preventDefault();
+</footer>
 
-            const lrNumber = wayBillInput.value.trim();
-            if (!lrNumber) {
-                showMessage('Please enter an LR number first.', 'warning');
-                wayBillInput.focus();
-                return;
-            }
 
-            if (!isValidLrNumber(lrNumber)) {
-                showMessage('LR numbers must start with SRT-. Please check and try again.', 'warning');
-                wayBillInput.focus();
-                return;
-            }
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-            await fetchTrackingInfo(lrNumber);
-        });
+<script>
 
-        wayBillInput.addEventListener('input', () => {
-            const lrNumber = wayBillInput.value.trim();
-            if (!lrNumber) {
-                messageBox.hidden = false;
-                showMessage('Start by entering an LR number to view tracking details.', 'info');
-                return;
-            }
+    /* =========================================================
+       DOM ELEMENTS
+    ========================================================= */
 
-            if (!isValidLrNumber(lrNumber)) {
-                messageBox.hidden = false;
-                showMessage('LR numbers start with SRT-.', 'warning');
-                return;
-            }
+    const form = document.getElementById('trackingForm');
+    const submitButton = document.getElementById('trackingSubmit');
+    const wayBillInput = document.getElementById('wayBillNumber');
+    const messageBox = document.getElementById('trackingMessage');
 
-            messageBox.hidden = false;
-            showMessage('Press "Track now" to load tracking details.', 'info');
-        });
+    const resultSection = document.getElementById('trackingResult');
+    const summaryContainer = document.getElementById('trackingSummary');
+    const statusesContainer = document.getElementById('trackingStatuses');
 
-        async function fetchTrackingInfo(lrNumber) {
-            const apiUrl = new URL('https://ivcargo.in/ivcargo/getTrackStatusDetails.do');
-            apiUrl.searchParams.set('pageId', '340');
-            apiUrl.searchParams.set('eventId', '5');
-            apiUrl.searchParams.set('modulename', 'trackStatus');
-            apiUrl.searchParams.set('accountGroupId', '740');
-            apiUrl.searchParams.set('wayBillNumber', lrNumber);
 
-            setLoadingState(true);
-            showMessage('Fetching tracking details...', 'info');
+    /* =========================================================
+       FORM SUBMISSION
+    ========================================================= */
 
-            try {
-                const response = await fetch(apiUrl.toString(), {
-                    method: 'GET',
-                    headers: { 'Accept': 'application/json' },
-                    mode: 'cors'
-                });
+    form.addEventListener('submit', async (event) => {
 
-                if (!response.ok) {
-                    throw new Error(`Tracking service returned status ${response.status}`);
-                }
+        event.preventDefault();
 
-                const payload = await response.json();
-                const trackingData = normalizeTrackingData(payload);
+        const lrNumber = wayBillInput.value.trim();
 
-                if (isMissingTrackingRecord(payload, trackingData)) {
-                    renderNotFoundError(lrNumber);
-                    return;
-                }
+        if (!lrNumber) {
 
-                renderTrackingInfo(trackingData, lrNumber);
-            } catch (error) {
-                console.error('Tracking fetch failed:', error);
-                renderErrorState('Unable to connect to tracking servers. Please double-check your connection or LR number.');
-            } finally {
-                setLoadingState(false);
-            }
+            showMessage(
+                'Please enter an LR number first.',
+                'warning'
+            );
+
+            wayBillInput.focus();
+
+            return;
         }
 
-        function normalizeTrackingData(payload) {
-            if (!payload) return [];
-            const raw = payload.serviceResult || payload.result || payload;
-            if (Array.isArray(raw)) {
-                return raw.filter(Boolean);
+        await fetchTrackingInfo(lrNumber);
+
+    });
+
+
+    /* =========================================================
+       INPUT MESSAGE
+    ========================================================= */
+
+    wayBillInput.addEventListener('input', () => {
+
+        const lrNumber = wayBillInput.value.trim();
+
+        messageBox.hidden = false;
+
+        if (!lrNumber) {
+
+            showMessage(
+                'Start by entering an LR number to view tracking details.',
+                'info'
+            );
+
+            return;
+        }
+
+        showMessage(
+            'Press "Track now" to load tracking details.',
+            'info'
+        );
+
+    });
+
+
+    /* =========================================================
+       API REQUEST
+    ========================================================= */
+
+    async function fetchTrackingInfo(lrNumber) {
+
+        const apiUrl = new URL(
+            'https://ivcargo.in/ivcargo/getTrackStatusDetails.do'
+        );
+
+        apiUrl.searchParams.set('pageId', '340');
+        apiUrl.searchParams.set('eventId', '5');
+        apiUrl.searchParams.set('modulename', 'trackStatus');
+        apiUrl.searchParams.set('accountGroupId', '740');
+        apiUrl.searchParams.set('wayBillNumber', lrNumber);
+
+        setLoadingState(true);
+
+        showMessage(
+            'Fetching tracking details...',
+            'info'
+        );
+
+        try {
+
+            const response = await fetch(
+                apiUrl.toString(),
+                {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json'
+                    },
+                    mode: 'cors'
+                }
+            );
+
+            if (!response.ok) {
+
+                throw new Error(
+                    `Tracking service returned status ${response.status}`
+                );
+
             }
-            if (raw && typeof raw === 'object' && Object.keys(raw).length > 0) {
-                return [raw];
+
+            const payload = await response.json();
+
+            console.log(
+                'Tracking API response:',
+                payload
+            );
+
+            const trackingData =
+                normalizeTrackingData(payload);
+
+
+            if (
+                isMissingTrackingRecord(
+                    payload,
+                    trackingData
+                )
+            ) {
+
+                renderNotFoundError(lrNumber);
+
+                return;
             }
+
+
+            renderTrackingInfo(
+                trackingData,
+                lrNumber
+            );
+
+        } catch (error) {
+
+            console.error(
+                'Tracking fetch failed:',
+                error
+            );
+
+            renderErrorState(
+                'Unable to connect to tracking servers. Please double-check your connection or LR number.'
+            );
+
+        } finally {
+
+            setLoadingState(false);
+
+        }
+
+    }
+
+
+    /* =========================================================
+       NORMALIZE API RESPONSE
+    ========================================================= */
+
+    function normalizeTrackingData(payload) {
+
+        if (!payload) {
             return [];
         }
 
-        function isMissingTrackingRecord(payload, trackingData) {
-            if (!trackingData || trackingData.length === 0) {
-                return true;
-            }
+        const raw =
+            payload.serviceResult ||
+            payload.result ||
+            payload;
 
-            const hasMeaningfulFields = trackingData.some((record) =>
+
+        if (Array.isArray(raw)) {
+
+            return raw.filter(Boolean);
+
+        }
+
+
+        if (
+            raw &&
+            typeof raw === 'object' &&
+            Object.keys(raw).length > 0
+        ) {
+
+            return [raw];
+
+        }
+
+
+        return [];
+
+    }
+
+
+    /* =========================================================
+       CHECK FOR MISSING RECORD
+    ========================================================= */
+
+    function isMissingTrackingRecord(
+        payload,
+        trackingData
+    ) {
+
+        if (
+            !trackingData ||
+            trackingData.length === 0
+        ) {
+
+            return true;
+
+        }
+
+
+        const hasMeaningfulFields =
+            trackingData.some((record) =>
+
                 Boolean(
+
                     record?.status ||
                     record?.dateTime ||
                     record?.branchName ||
                     record?.destinationBranchName ||
-                    record?.chargeWeight ||
-                    record?.billableWeight ||
+                    record?.actualWeight ||
                     record?.dispatchVehicleNumber
+
                 )
+
             );
 
-            return !hasMeaningfulFields;
+
+        return !hasMeaningfulFields;
+
+    }
+
+
+    /* =========================================================
+       RENDER COMPLETE TRACKING RESULT
+    ========================================================= */
+
+    function renderTrackingInfo(trackingData, lrNumber) {
+    summaryContainer.innerHTML = '';
+    statusesContainer.innerHTML = '';
+
+    summaryContainer.appendChild(
+        createSummaryCard(lrNumber, trackingData)
+    );
+
+    const stages = buildTrackingStages(trackingData);
+
+    stages.forEach((stage, index) => {
+        statusesContainer.appendChild(
+            createStageItem(
+                stage,
+                index,
+                stages.length
+            )
+        );
+    });
+
+    resultSection.hidden = false;
+    messageBox.hidden = true;
+    messageBox.textContent = '';
+}
+
+
+    /* =========================================================
+       SUMMARY CARD
+    ========================================================= */
+
+    function createSummaryCard(
+        lrNumber,
+        trackingData
+    ) {
+
+        const card =
+            document.createElement('div');
+
+        card.className =
+            'tracking-summary-card-inner';
+
+
+        const label =
+            document.createElement('span');
+
+        label.className =
+            'tracking-summary-label';
+
+        label.textContent =
+            'Tracking ID';
+
+
+        const value =
+            document.createElement('h3');
+
+        value.className =
+            'tracking-summary-value';
+
+        value.textContent =
+            lrNumber;
+
+
+        const source =
+            trackingData.find(
+                item => item?.sourceBranchName
+            )?.sourceBranchName || '';
+
+
+        const destination =
+            trackingData.find(
+                item => item?.destinationBranchName
+            )?.destinationBranchName || '';
+
+
+        const route =
+            document.createElement('p');
+
+        route.className =
+            'tracking-summary-route';
+
+
+        if (source && destination) {
+
+            route.textContent =
+                `${source} → ${destination}`;
+
+        } else {
+
+            route.textContent =
+                'Shipment status overview';
+
         }
 
-        function isValidLrNumber(lrNumber) {
-            return String(lrNumber || '').trim().toUpperCase().startsWith('SRT-');
-        }
 
-        function renderTrackingInfo(trackingData, lrNumber) {
-            summaryContainer.innerHTML = '';
-            statusesContainer.innerHTML = '';
+        const latestRecord =
+            [...trackingData].sort(
+                (a, b) =>
+                    parseTrackingDate(
+                        b?.dateTime
+                    ) -
+                    parseTrackingDate(
+                        a?.dateTime
+                    )
+            )[0];
 
-            summaryContainer.appendChild(createSummaryCard(lrNumber, trackingData));
 
-            const steps = buildTrackingStages(trackingData);
-            steps.forEach((stage, index) => {
-                statusesContainer.appendChild(createStageItem(stage, index, steps.length));
-            });
+        const sub =
+            document.createElement('p');
 
-            resultSection.hidden = false;
-            messageBox.hidden = true;
-            messageBox.textContent = '';
-        }
+        sub.className =
+            'tracking-summary-sub';
 
-        function createSummaryCard(lrNumber, trackingData) {
-            const card = document.createElement('div');
-            card.className = 'tracking-summary-card-inner';
 
-            const label = document.createElement('span');
-            label.className = 'tracking-summary-label';
-            label.textContent = 'Tracking ID';
+        sub.textContent =
+            latestRecord?.dateTime
+                ? `Latest update: ${formatTrackingDate(
+                    latestRecord.dateTime
+                )}`
+                : '';
 
-            const value = document.createElement('h3');
-            value.className = 'tracking-summary-value';
-            value.textContent = lrNumber;
 
-            const sub = document.createElement('p');
-            sub.className = 'tracking-summary-sub';
-            const latestDate = trackingData.find((item) => item?.dateTime)?.dateTime;
-            sub.textContent = latestDate ? `Latest update: ${formatTrackingDate(latestDate)}` : 'Shipment status overview';
+        card.append(
+            label,
+            value,
+            route,
+            sub
+        );
 
-            card.append(label, value, sub);
-            return card;
-        }
 
-        function renderNotFoundError(lrNumber) {
-            summaryContainer.innerHTML = '';
-            statusesContainer.innerHTML = '';
-            resultSection.hidden = true;
-            messageBox.hidden = false;
-            showMessage(`No tracking record found for LR number ${lrNumber}. Please double-check the number.`, 'danger');
-        }
+        return card;
 
-        function renderErrorState(text) {
-            summaryContainer.innerHTML = '';
-            statusesContainer.innerHTML = '';
-            resultSection.hidden = true;
-            messageBox.hidden = false;
-            showMessage(text, 'danger');
-        }
+    }
 
-        function showMessage(text, tone) {
-            messageBox.textContent = text;
-            messageBox.dataset.tone = tone;
-        }
 
-        function setLoadingState(isLoading) {
-            submitButton.disabled = isLoading;
-            submitButton.textContent = isLoading ? 'Tracking...' : 'Track now';
-            wayBillInput.disabled = isLoading;
-        }
+    /* =========================================================
+       BUILD CITY-BASED TRACKING
+       
+       SOURCE:
+         BOOKED
+         DISPATCHED
 
-        function buildTrackingStages(trackingData) {
-            const stageDefinitions = [
-                { key: 'BOOK', label: 'Booked' },
-                { key: 'DISPATCH', label: 'Dispatched' },
-                { key: 'RECEIV', label: 'Received' },
-                { key: 'DELIVER', label: 'Delivered' },
-            ];
+       INTERMEDIATE:
+         DISPATCHED
 
-            return stageDefinitions.map((definition) => {
-                const matchedRecord = trackingData.find((record) =>
-                    String(record?.status || '').toUpperCase().includes(definition.key)
-                ) || null;
+       DESTINATION:
+         RECEIVED
+         DELIVERED
+    ========================================================= */
 
-                return {
-                    ...definition,
-                    completed: Boolean(matchedRecord),
-                    record: matchedRecord,
-                };
-            });
-        }
+    function buildTrackingStages(trackingData) {
+    if (!Array.isArray(trackingData) || trackingData.length === 0) {
+        return [];
+    }
 
-        function createStageItem(stage, index, total) {
-            const item = document.createElement('article');
-            item.className = `tracking-stage ${stage.completed ? 'is-complete' : 'is-neutral'} ${index === total - 1 ? 'is-last' : ''}`;
+    // Sort everything chronologically
+    const sortedData = [...trackingData].sort((a, b) => {
+        return parseTrackingDate(a?.dateTime) -
+               parseTrackingDate(b?.dateTime);
+    });
 
-            const button = document.createElement('button');
-            button.type = 'button';
-            button.className = 'tracking-stage-button';
-            button.setAttribute('aria-expanded', 'false');
+    const sourceBranch = String(
+        sortedData.find(record => record?.sourceBranchName)
+            ?.sourceBranchName || ''
+    ).trim().toUpperCase();
 
-            const rail = document.createElement('span');
-            rail.className = 'tracking-stage-rail';
+    const destinationBranch = String(
+        sortedData.find(record => record?.destinationBranchName)
+            ?.destinationBranchName || ''
+    ).trim().toUpperCase();
 
-            const dot = document.createElement('span');
-            dot.className = `tracking-stage-dot ${stage.completed ? 'is-complete' : 'is-neutral'}`;
-            dot.innerHTML = `<i class="fa-solid ${stage.completed ? 'fa-check' : 'fa-circle'}"></i>`;
+    return sortedData
+        .filter(record => {
 
-            const line = document.createElement('span');
-            line.className = 'tracking-stage-line';
+            const status = String(
+                record?.status || ''
+            ).trim().toUpperCase();
 
-            rail.append(dot, line);
+            const branch = String(
+                record?.branchName || ''
+            ).trim().toUpperCase();
 
-            const body = document.createElement('span');
-            body.className = 'tracking-stage-body';
-
-            const title = document.createElement('span');
-            title.className = 'tracking-stage-title';
-            title.textContent = stage.label;
-
-            const meta = document.createElement('span');
-            meta.className = 'tracking-stage-meta';
-            const chargeWeight = pickFirstDefined(stage.record?.chargeWeight, stage.record?.billableWeight);
-            meta.textContent = [
-                stage.record?.dateTime ? formatTrackingDate(stage.record.dateTime) : (stage.completed ? 'Completed' : 'Pending'),
-                chargeWeight ? `Charge weight: ${chargeWeight}` : '',
-            ].filter(Boolean).join(' · ');
-
-            body.append(title, meta);
-
-            const chevron = document.createElement('span');
-            chevron.className = 'tracking-stage-chevron';
-            chevron.innerHTML = '<i class="fa-solid fa-chevron-down"></i>';
-
-            button.append(rail, body, chevron);
-
-            const panel = document.createElement('div');
-            panel.className = 'tracking-stage-panel';
-            panel.hidden = true;
-
-            const fields = buildStatusFields(stage.record);
-            if (!stage.record) {
-                const empty = document.createElement('p');
-                empty.className = 'tracking-stage-empty';
-                empty.textContent = 'No update recorded for this stage yet.';
-                panel.appendChild(empty);
-            } else {
-                const details = document.createElement('div');
-                details.className = 'tracking-stage-details';
-
-                fields.forEach(({ label, value }) => {
-                    const row = document.createElement('div');
-                    row.className = 'tracking-stage-row';
-
-                    const key = document.createElement('span');
-                    key.className = 'tracking-stage-key';
-                    key.textContent = label;
-
-                    const val = document.createElement('span');
-                    val.className = 'tracking-stage-value';
-                    val.textContent = value;
-
-                    row.append(key, val);
-                    details.appendChild(row);
-                });
-
-                panel.appendChild(details);
+            // SOURCE:
+            // BOOKED + DISPATCHED
+            if (branch === sourceBranch) {
+                return (
+                    status === 'BOOKED' ||
+                    status === 'DISPATCHED'
+                );
             }
 
-            button.addEventListener('click', () => {
-                const expanded = button.getAttribute('aria-expanded') === 'true';
-                button.setAttribute('aria-expanded', String(!expanded));
-                panel.hidden = expanded;
-                item.classList.toggle('is-open', !expanded);
-            });
-
-            item.append(button, panel);
-            return item;
-        }
-
-        function buildStatusFields(status) {
-            if (!status) return [];
-
-            const fields = [
-                { label: 'Branch name', value: status.branchName },
-                { label: 'Date & time', value: formatTrackingDate(status.dateTime) },
-                { label: 'Destination branch', value: status.destinationBranchName },
-                { label: 'Quantity', value: status.quantity },
-                { label: 'Remark', value: status.remark },
-                { label: 'Charge weight', value: pickFirstDefined(status.chargeWeight, status.billableWeight) },
-                { label: 'Dispatch vehicle', value: status.dispatchVehicleNumber },
-            ];
-
-            return fields.filter(({ value }) => value !== undefined && value !== null && String(value).trim() !== '');
-        }
-
-        function formatTrackingDate(value) {
-            if (!value || String(value).trim() === '') return '';
-
-            const raw = String(value).trim();
-            const normalized = raw.includes('T') ? raw : raw.replace(' ', 'T');
-            const parsed = new Date(normalized);
-
-            if (!Number.isNaN(parsed.getTime())) {
-                return parsed.toLocaleString('en-US', {
-                    month: 'short',
-                    day: 'numeric',
-                    year: 'numeric',
-                    hour: 'numeric',
-                    minute: '2-digit',
-                    hour12: true,
-                });
+            // DESTINATION:
+            // RECEIVED + DELIVERED
+            if (branch === destinationBranch) {
+                return (
+                    status === 'RECEIVED' ||
+                    status === 'DELIVERED'
+                );
             }
 
-            return raw;
+            // TRANSIT:
+            // RECEIVED + DISPATCHED
+            return (
+                status === 'RECEIVED' ||
+                status === 'DISPATCHED'
+            );
+        })
+        .map(record => ({
+            status: String(
+                record.status || ''
+            ).trim().toUpperCase(),
+
+            label: getTrackingStatusLabel(
+                record.status
+            ),
+
+            record: record,
+
+            completed: true
+        }));
+}
+    /* =========================================================
+       DETERMINE CITY TYPE
+    ========================================================= */
+
+    function getCityType(
+        cityName,
+        sourceBranch,
+        destinationBranch
+    ) {
+
+        const city =
+            String(
+                cityName || ''
+            )
+            .trim()
+            .toUpperCase();
+
+
+        const source =
+            String(
+                sourceBranch || ''
+            )
+            .trim()
+            .toUpperCase();
+
+
+        const destination =
+            String(
+                destinationBranch || ''
+            )
+            .trim()
+            .toUpperCase();
+
+
+        if (city === source) {
+            return 'source';
         }
 
-        function pickFirstDefined(...values) {
-            for (const value of values) {
-                if (value !== undefined && value !== null && String(value).trim() !== '') {
-                    return value;
-                }
-            }
-            return '';
+
+        if (city === destination) {
+            return 'destination';
         }
-    </script>
+
+
+        return 'intermediate';
+
+    }
+
+
+    /* =========================================================
+       STATUS LABEL
+    ========================================================= */
+
+    function getTrackingStatusLabel(
+        status
+    ) {
+
+        const normalizedStatus =
+            String(
+                status || ''
+            )
+            .trim()
+            .toUpperCase();
+
+
+        switch (normalizedStatus) {
+
+            case 'BOOKED':
+                return 'Booked';
+
+            case 'DISPATCHED':
+                return 'Dispatched';
+
+            case 'RECEIVED':
+                return 'Received';
+
+            case 'DELIVERED':
+                return 'Delivered';
+
+            default:
+                return status || 'Update';
+
+        }
+
+    }
+
+
+    /* =========================================================
+       CREATE CITY SECTION
+    ========================================================= */
+
+    function createCitySection(
+        city,
+        cityIndex,
+        totalCities
+    ) {
+
+        const section =
+            document.createElement('section');
+
+        section.className =
+            `tracking-city-section tracking-city-${city.type}`;
+
+
+        const heading =
+            document.createElement('div');
+
+        heading.className =
+            'tracking-city-heading';
+
+
+        const title =
+            document.createElement('h3');
+
+        title.className =
+            'tracking-city-title';
+
+        title.textContent =
+            city.name;
+
+
+        const typeLabel =
+            document.createElement('span');
+
+        typeLabel.className =
+            'tracking-city-type';
+
+
+        if (city.type === 'source') {
+
+            typeLabel.textContent =
+                'Origin';
+
+        } else if (
+            city.type === 'destination'
+        ) {
+
+            typeLabel.textContent =
+                'Destination';
+
+        } else {
+
+            typeLabel.textContent =
+                'Transit';
+
+        }
+
+
+        heading.append(
+            title,
+            typeLabel
+        );
+
+
+        const stagesContainer =
+            document.createElement('div');
+
+        stagesContainer.className =
+            'tracking-city-stages';
+
+
+        city.stages.forEach(
+            (stage, index) => {
+
+                stagesContainer.appendChild(
+                    createStageItem(
+                        stage,
+                        index,
+                        city.stages.length
+                    )
+                );
+
+            }
+        );
+
+
+        section.append(
+            heading,
+            stagesContainer
+        );
+
+
+        return section;
+
+    }
+
+
+    /* =========================================================
+       CREATE INDIVIDUAL STATUS
+    ========================================================= */
+
+    function createStageItem(stage, index, total) {
+    const item = document.createElement('article');
+
+    item.className =
+        `tracking-stage ${
+            stage.completed ? 'is-complete' : 'is-neutral'
+        } ${
+            index === total - 1 ? 'is-last' : ''
+        }`;
+
+    const button = document.createElement('button');
+
+    button.type = 'button';
+    button.className = 'tracking-stage-button';
+    button.setAttribute('aria-expanded', 'false');
+
+    const rail = document.createElement('span');
+    rail.className = 'tracking-stage-rail';
+
+    const dot = document.createElement('span');
+
+    dot.className =
+        `tracking-stage-dot ${
+            stage.completed ? 'is-complete' : 'is-neutral'
+        }`;
+
+    dot.innerHTML =
+        `<i class="fa-solid ${
+            stage.completed ? 'fa-check' : 'fa-circle'
+        }"></i>`;
+
+    const line = document.createElement('span');
+    line.className = 'tracking-stage-line';
+
+    rail.append(dot, line);
+
+    const body = document.createElement('span');
+    body.className = 'tracking-stage-body';
+
+    const title = document.createElement('span');
+    title.className = 'tracking-stage-title';
+    title.textContent = stage.label;
+
+    const branch = document.createElement('span');
+    branch.className = 'tracking-stage-branch';
+    branch.textContent = stage.record?.branchName || '';
+
+    const meta = document.createElement('span');
+    meta.className = 'tracking-stage-meta';
+
+    meta.textContent = stage.record?.dateTime
+    ? formatTrackingDate(stage.record.dateTime)
+    : 'Completed';
+
+    body.append(
+        title,
+        branch,
+        meta
+    );
+
+    const chevron = document.createElement('span');
+    chevron.className = 'tracking-stage-chevron';
+
+    chevron.innerHTML =
+        '<i class="fa-solid fa-chevron-down"></i>';
+
+    button.append(
+        rail,
+        body,
+        chevron
+    );
+
+    const panel = document.createElement('div');
+
+    panel.className = 'tracking-stage-panel';
+    panel.hidden = true;
+
+    const fields = buildStatusFields(stage.record);
+
+    if (!stage.record) {
+        const empty = document.createElement('p');
+
+        empty.className = 'tracking-stage-empty';
+        empty.textContent =
+            'No update recorded for this stage yet.';
+
+        panel.appendChild(empty);
+
+    } else {
+
+        const details = document.createElement('div');
+
+        details.className =
+            'tracking-stage-details';
+
+        fields.forEach(({ label, value }) => {
+
+            const row = document.createElement('div');
+
+            row.className =
+                'tracking-stage-row';
+
+            const key = document.createElement('span');
+
+            key.className =
+                'tracking-stage-key';
+
+            key.textContent =
+                label;
+
+            const val = document.createElement('span');
+
+            val.className =
+                'tracking-stage-value';
+
+            val.textContent =
+                value;
+
+            row.append(key, val);
+
+            details.appendChild(row);
+
+        });
+
+        panel.appendChild(details);
+    }
+
+    button.addEventListener('click', () => {
+
+        const expanded =
+            button.getAttribute('aria-expanded') === 'true';
+
+        button.setAttribute(
+            'aria-expanded',
+            String(!expanded)
+        );
+
+        panel.hidden = expanded;
+
+        item.classList.toggle(
+            'is-open',
+            !expanded
+        );
+    });
+
+    item.append(
+        button,
+        panel
+    );
+
+    return item;
+}
+
+    /* =========================================================
+       STATUS DETAILS
+       
+       Deliberately does NOT show:
+         - Branch name
+         - Destination branch
+
+       Those are already represented by the city sections.
+    ========================================================= */
+
+    function buildStatusFields(status) {
+    if (!status) {
+        return [];
+    }
+
+    const fields = [
+        {
+            label: 'Date & time',
+            value: formatTrackingDate(status.dateTime)
+        },
+        {
+            label: 'Remark',
+            value: status.remark
+        },
+        {
+            label: 'Dispatch vehicle',
+            value: status.dispatchVehicleNumber
+        }
+    ];
+
+    return fields.filter(
+        ({ value }) =>
+            value !== undefined &&
+            value !== null &&
+            String(value).trim() !== ''
+    );
+}
+
+    /* =========================================================
+       FORMAT DATE
+    ========================================================= */
+
+    function formatTrackingDate(value) {
+    if (!value || String(value).trim() === '') {
+        return '';
+    }
+
+    const parsed = new Date(String(value).trim());
+
+    if (!Number.isNaN(parsed.getTime())) {
+        return parsed.toLocaleString('en-US', {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric',
+            hour: 'numeric',
+            minute: '2-digit',
+            hour12: true
+        });
+    }
+
+    return String(value).trim();
+}
+
+
+    /* =========================================================
+       PARSE DATE FOR SORTING
+    ========================================================= */
+
+    function parseTrackingDate(value) {
+    if (!value) {
+        return 0;
+    }
+
+    const parsed = new Date(String(value).trim());
+
+    if (Number.isNaN(parsed.getTime())) {
+        console.warn('Unable to parse tracking date:', value);
+        return 0;
+    }
+
+    return parsed.getTime();
+}
+
+
+    /* =========================================================
+       FIRST DEFINED VALUE
+    ========================================================= */
+
+    function pickFirstDefined(
+        ...values
+    ) {
+
+        for (
+            const value of values
+        ) {
+
+            if (
+                value !== undefined &&
+                value !== null &&
+                String(value).trim() !== ''
+            ) {
+
+                return value;
+
+            }
+
+        }
+
+
+        return '';
+
+    }
+
+
+    /* =========================================================
+       ERROR STATES
+    ========================================================= */
+
+    function renderNotFoundError(
+        lrNumber
+    ) {
+
+        summaryContainer.innerHTML = '';
+
+        statusesContainer.innerHTML = '';
+
+        resultSection.hidden = true;
+
+        messageBox.hidden = false;
+
+
+        showMessage(
+            `No tracking record found for LR number ${lrNumber}. Please double-check the number.`,
+            'danger'
+        );
+
+    }
+
+
+    function renderErrorState(
+        text
+    ) {
+
+        summaryContainer.innerHTML = '';
+
+        statusesContainer.innerHTML = '';
+
+        resultSection.hidden = true;
+
+        messageBox.hidden = false;
+
+
+        showMessage(
+            text,
+            'danger'
+        );
+
+    }
+
+
+    /* =========================================================
+       MESSAGE
+    ========================================================= */
+
+    function showMessage(
+        text,
+        tone
+    ) {
+
+        messageBox.textContent =
+            text;
+
+        messageBox.dataset.tone =
+            tone;
+
+    }
+
+
+    /* =========================================================
+       LOADING STATE
+    ========================================================= */
+
+    function setLoadingState(
+        isLoading
+    ) {
+
+        submitButton.disabled =
+            isLoading;
+
+        submitButton.textContent =
+            isLoading
+                ? 'Tracking...'
+                : 'Track now';
+
+
+        wayBillInput.disabled =
+            isLoading;
+
+    }
+
+</script>
+```
+
 </body>
 </html>
