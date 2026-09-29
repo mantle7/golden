@@ -3,249 +3,560 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Services - Golden Transport Services</title>
+
     <link rel="canonical" href="https://www.goldentransportservice.in/index.html">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
     <style>
- .our-services {
-    padding: 50px 0;
-    background-color: #f8f9fa;
-}
 
-.services-list {
-    list-style-type: none;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.services-list li {
-    margin: 10px;
-    padding: 10px 20px;
-    background-color: #005f6b;
-    border-radius: 5px;
-}
-
-.services-list a {
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.services-list a:hover {
-    text-decoration: underline;
-}
         .card-sec {
             padding: 6rem 0;
             margin-bottom: 4rem;
         }
-        .card {
-            height: 90%;
-            display: flex;
-            flex-direction: column;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+        /* ==============================
+           SERVICE CARD
+           ============================== */
+
+        .service-card {
+            display: flex !important;
+            flex-direction: column !important;
+
+            width: 100% !important;
+            height: auto !important;
+            min-height: 0 !important;
+
+            margin: 0 !important;
+            padding: 0 !important;
+
+            background: #ffffff !important;
+
+            border: 1px solid rgba(0, 0, 0, 0.1) !important;
+            border-radius: 15px !important;
+
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+
+            overflow: hidden !important;
+
             transition: transform 0.3s ease-in-out;
         }
-        .card:hover {
+
+        .service-card:hover {
             transform: translateY(-5px);
         }
-        .card-body {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            padding: 1rem;
+
+        /* ==============================
+           SERVICE IMAGE
+           ============================== */
+
+        .service-card-image {
+    display: block !important;
+    width: 100% !important;
+    height: 220px !important;
+    max-width: 100% !important;
+    max-height: 220px !important;
+    min-height: 0 !important;
+
+    margin: 0 !important;
+    padding: 10px !important;
+
+    object-fit: contain !important;
+    object-position: center !important;
+}
+
+        /* ==============================
+           SERVICE CARD BODY
+           ============================== */
+
+        .service-card-body {
+            display: flex !important;
+            flex-direction: column !important;
+
+            width: 100% !important;
+
+            height: auto !important;
+            min-height: 0 !important;
+
+            margin: 0 !important;
+            padding: 1rem !important;
+
+            overflow: visible !important;
         }
-        .card-h2 {
+
+        .service-card-title {
             font-size: 1.1rem;
-            margin-bottom: 0.5rem;
+
+            margin: 0 0 0.5rem 0;
+
             text-align: center;
+
             min-height: 2.2rem;
+
             display: flex;
             align-items: center;
             justify-content: center;
         }
-        .card-text {
-            flex-grow: 1;
-            display: flex;
-            align-items: flex-start;
+
+        .service-card-text {
+            margin: 0;
+
             text-align: center;
-            margin-bottom: 0;
+
             font-size: 0.9rem;
+
+            line-height: 1.5;
         }
-   
-.last-card .card-body {
-    padding-top: 15px;
-}
-.last-card .card-h2 {
-    margin-top: 15px;
-}
+
+        /* ==============================
+           LAST CARD
+           ============================== */
+
+        .service-card.last-card .service-card-body {
+            padding-top: 15px !important;
+        }
+
+        .service-card.last-card .service-card-title {
+            margin-top: 15px;
+        }
 
     </style>
 </head>
-<body>
-  <!-- Navbar Section -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
-    <div class="container">
-        <a class="navbar-brand" href="index.html"><img class="brand" src="img/1.png" alt="Brand Logo"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="branches.html">Branches</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="services.html">Services</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="track.html">Tracking</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-    </nav>
-    <section class="card-sec">
-        <div class="container">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
-                <section id="full-truck-load">
-                <div class="col">
-                    <div class="card">
-                        <img src="img/2.png" class="card-img-top" alt="Full Truck Load">
-                        <div class="card-body">
-                            <h2 class="card-h2">Full Truck Load</h2>
-                            <p class="card-text">We offer an affordable transportation service, offering a diverse range of full truck load vehicles ranging from 9 tonnes to 24 tonnes in capacity.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section id="part-truck-load">
-                <div class="col">
-                    <div class="card">
-                        <img src="img/6.png" class="card-img-top" alt="Part Truck Load">
-                        <div class="card-body">
-                            <h2 class="card-h2">Part Truck Load</h2>
-                            <p class="card-text">Our Part Truck Load service offers flexibility for smaller shipments. Share truck space with other consignments, reducing costs while maintaining efficiency.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-                <section id="parcel-services">
-                <div class="col">
-                    <div class="card">
-                        <img src="img/parcel.png" class="card-img-top" alt="Daily parcel service">
-                        <div class="card-body">
-                            <h2 class="card-h2">Daily Parcel Services</h2>
-                            <p class="card-text">Daily fast parcel service to all over Tamil Nadu ranging from all types of parcels, boxes, packages and other items.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-                <section id="customised-solutions">
-                <div class="col">
-                    <div class="card">
-                        <img src="img/customise.png" class="card-img-top" alt="Customised Solutions">
-                        <div class="card-body">
-                            <h2 class="card-h2">Customised Solutions</h2>
-                            <p class="card-text">Customised solutions for our esteemed customers. You can talk with us about your customised needs, and we will try our best to fulfil the requirements.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-                <section id="real-time-tracking">
-                <div class="col">
-                    <div class="card">
-                        <img src="img/realtime.png" class="card-img-top" alt="Real-time Tracking">
-                        <div class="card-body">
-                            <h2 class="card-h2">Real-time Tracking</h2>
-                            <p class="card-text">Track your consignment on the go, with our real-time tracking mechanism designed keeping in mind requirements of our customers.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-                <section id="express-delivery">
-                <div class="col">
-                    <div class="card last-card">
-                        <img src="img/express.png" class="card-img-top" alt="Express Delivery">
-                        <div class="card-body">
-                            <h2 class="card-h2">Express Delivery</h2>
-                            <p class="card-text">With the support of highly professional fleets, we take pride in committing 3 days of delivery time from Surat to all over Tamil Nadu.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Footer Section -->
-    <footer>
- <div class="container">
-    <div class="footer-base">
-        <div class="row align-items-center">
-          <div class="col-md-3">
-            <h4>Find Us At:</h4>
-          <hr>
-            <p class="footer-address">
-              H/O: 158/1, Royal Township, Puna Kumbharia Road, Saroli, Surat<br>395010
-            </p>
-            <div class="contact-info">
-              <ul>
-                <li><a href="https://wa.me/+919789907248?text=urlencodedtext.">9789907248/</a><a href="https://wa.me/+918989580064?text=urlencodedtext.">8980580064</a></li>
-                <li><a href="mailto:goldentransport111@gmail.com">goldentransport111@gmail.com</a></li>
-                <a href="https://maps.app.goo.gl/AJsBRRiAu8BHpBQWA" target="_blank" class="btn btn-locate" style="color: #ffffff; background-color: #005f6b;">Locate Us</a>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md-6"><img src="img/111.png" alt="Logo" class="footer-nav-logo">
-            <br> 
-            <br>
-            <div class="footer-links">
-              <a href="index.html" class="footer-links-color">Home</a> <span class="divider">|</span> <a href="contact.html" class="footer-links-color">Contact us</a>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="service">
-              <h4>Our Distinctive Services</h4>
-            <hr>
-                  <ul>
-                      <li>Full Truck Load</li>
-                      <li>Part Truck Load</li>
-                      <li>Parcel Services</li>
-                      <li>Real-time Tracking</li>
-                      <li>Customized Solutions</li>
-                      <li>Express Delivery</li>
-                  </ul>
-            </div>
-          </div>
-        </div>
-        <hr class="hr-line">
-        <div class="row">
-          <div class="col-12">
-            <p class="footer-text">© 2017 Golden Transport Services. All Rights Reserved.</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12 social-icons">
-            <a href="https://wa.me/9686107197?text=urlencodedtext."><i class="fab fa-whatsapp"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-</footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<body>
+
+    <!-- Navbar Section -->
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="index.html">
+                <img class="brand" src="img/1.png" alt="Brand Logo">
+            </a>
+
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+
+                <ul class="navbar-nav">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            Home
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="branches.html">
+                            Branches
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="services.html">
+                            Services
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="track.html">
+                            Tracking
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">
+                            Contact
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Services -->
+
+    <section class="card-sec">
+
+        <div class="container">
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+
+
+                <!-- Full Truck Load -->
+
+                <section id="full-truck-load">
+
+                    <div class="col">
+
+                        <div class="service-card">
+
+                            <img
+                                src="img/2.png"
+                                class="service-card-image"
+                                alt="Full Truck Load">
+
+                            <div class="service-card-body">
+
+                                <h2 class="service-card-title">
+                                    Full Truck Load
+                                </h2>
+
+                                <p class="service-card-text">
+                                    We offer an affordable transportation service, offering a diverse range of full truck load vehicles ranging from 9 tonnes to 24 tonnes in capacity.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- Part Truck Load -->
+
+                <section id="part-truck-load">
+
+                    <div class="col">
+
+                        <div class="service-card">
+
+                            <img
+                                src="img/6.png"
+                                class="service-card-image"
+                                alt="Part Truck Load">
+
+                            <div class="service-card-body">
+
+                                <h2 class="service-card-title">
+                                    Part Truck Load
+                                </h2>
+
+                                <p class="service-card-text">
+                                    Our Part Truck Load service offers flexibility for smaller shipments. Share truck space with other consignments, reducing costs while maintaining efficiency.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- Parcel Services -->
+
+                <section id="parcel-services">
+
+                    <div class="col">
+
+                        <div class="service-card">
+
+                            <img
+                                src="img/parcel.png"
+                                class="service-card-image"
+                                alt="Daily parcel service">
+
+                            <div class="service-card-body">
+
+                                <h2 class="service-card-title">
+                                    Daily Parcel Services
+                                </h2>
+
+                                <p class="service-card-text">
+                                    Daily fast parcel service to all over Tamil Nadu ranging from all types of parcels, boxes, packages and other items.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- Customised Solutions -->
+
+                <section id="customised-solutions">
+
+                    <div class="col">
+
+                        <div class="service-card">
+
+                            <img
+                                src="img/customise.png"
+                                class="service-card-image"
+                                alt="Customised Solutions">
+
+                            <div class="service-card-body">
+
+                                <h2 class="service-card-title">
+                                    Customised Solutions
+                                </h2>
+
+                                <p class="service-card-text">
+                                    Customised solutions for our esteemed customers. You can talk with us about your customised needs, and we will try our best to fulfil the requirements.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- Real-time Tracking -->
+
+                <section id="real-time-tracking">
+
+                    <div class="col">
+
+                        <div class="service-card">
+
+                            <img
+                                src="img/realtime.png"
+                                class="service-card-image"
+                                alt="Real-time Tracking">
+
+                            <div class="service-card-body">
+
+                                <h2 class="service-card-title">
+                                    Real-time Tracking
+                                </h2>
+
+                                <p class="service-card-text">
+                                    Track your consignment on the go, with our real-time tracking mechanism designed keeping in mind requirements of our customers.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- Express Delivery -->
+
+                <section id="express-delivery">
+
+                    <div class="col">
+
+                        <div class="service-card last-card">
+
+                            <img
+                                src="img/express.png"
+                                class="service-card-image"
+                                alt="Express Delivery">
+
+                            <div class="service-card-body">
+
+                                <h2 class="service-card-title">
+                                    Express Delivery
+                                </h2>
+
+                                <p class="service-card-text">
+                                    With the support of highly professional fleets, we take pride in committing 3 days of delivery time from Surat to all over Tamil Nadu.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="footer-base">
+
+                <div class="row align-items-center">
+
+
+                    <div class="col-md-3">
+
+                        <h4>Find Us At:</h4>
+
+                        <hr>
+
+                        <p class="footer-address">
+                            H/O: 158/1, Royal Township, Puna Kumbharia Road, Saroli, Surat<br>
+                            395010
+                        </p>
+
+                        <div class="contact-info">
+
+                            <ul>
+
+                                <li>
+                                    <a href="https://wa.me/+919789907248?text=urlencodedtext.">
+                                        9789907248/
+                                    </a>
+
+                                    <a href="https://wa.me/+918989580064?text=urlencodedtext.">
+                                        8980580064
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="mailto:goldentransport111@gmail.com">
+                                        goldentransport111@gmail.com
+                                    </a>
+                                </li>
+
+                                <a
+                                    href="https://maps.app.goo.gl/AJsBRRiAu8BHpBQWA"
+                                    target="_blank"
+                                    class="btn btn-locate"
+                                    style="color: #ffffff; background-color: #005f6b;">
+
+                                    Locate Us
+
+                                </a>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <img
+                            src="img/111.png"
+                            alt="Logo"
+                            class="footer-nav-logo">
+
+                        <br>
+                        <br>
+
+                        <div class="footer-links">
+
+                            <a href="index.html" class="footer-links-color">
+                                Home
+                            </a>
+
+                            <span class="divider">|</span>
+
+                            <a href="contact.html" class="footer-links-color">
+                                Contact us
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-3">
+
+                        <div class="service">
+
+                            <h4>Our Distinctive Services</h4>
+
+                            <hr>
+
+                            <ul>
+
+                                <li>Full Truck Load</li>
+                                <li>Part Truck Load</li>
+                                <li>Parcel Services</li>
+                                <li>Real-time Tracking</li>
+                                <li>Customized Solutions</li>
+                                <li>Express Delivery</li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <hr class="hr-line">
+
+
+                <div class="row">
+
+                    <div class="col-12">
+
+                        <p class="footer-text">
+                            © 2017 Golden Transport Services. All Rights Reserved.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+
+                    <div class="col-12 social-icons">
+
+                        <a href="https://wa.me/9686107197?text=urlencodedtext.">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
